@@ -1,7 +1,8 @@
+import streamlit as st
 import pandas as pd
 import numpy as np
-import warnings
-warnings.filterwarnings('ignore')
+st.title('Selling Price of Cars')
+streamlit run app.py
 df = pd.read_csv('Processed_Car_dataset.csv')
 df.head()
 col_drop=['name','selling_price']
