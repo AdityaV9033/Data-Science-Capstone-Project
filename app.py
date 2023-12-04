@@ -2,10 +2,8 @@ import pandas as pd
 import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
-df = pd.read_csv('CAR DETAILS.csv')
+df = pd.read_csv('Processed_Car_dataset.csv')
 df.head()
-df['Model_Name'] = df['name'].str.split().str.get(0)
-print(df[['name', 'Model_Name']])
 cols=['fuel','seller_type','transmission','owner','Model_Name']
 from sklearn.preprocessing import LabelEncoder
 lb=LabelEncoder()
