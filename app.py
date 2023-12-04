@@ -4,11 +4,6 @@ import warnings
 warnings.filterwarnings('ignore')
 df = pd.read_csv('Processed_Car_dataset.csv')
 df.head()
-cols=['fuel','seller_type','transmission','owner','Model_Name']
-from sklearn.preprocessing import LabelEncoder
-lb=LabelEncoder()
-for i in cols:
-    df[i]=lb.fit_transform(df[i])
 col_drop=['name','selling_price']
 X = df.drop(col_drop,axis=1)
 y = df['selling_price']
@@ -20,6 +15,7 @@ from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.25, random_state=42)
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
@@ -50,7 +46,6 @@ regressors = {
     'Bagging_LR Regression': BaggingRegressor(LinearRegression(), n_estimators=20, random_state=42),
     'AdaBoost_DT Regression': AdaBoostRegressor(DecisionTreeRegressor(max_depth=5), n_estimators=50, random_state=42)
 }
-model=[]
 results = {}
 for reg_name, reg in regressors.items():
     m=reg.fit(X_train, y_train)
@@ -60,7 +55,6 @@ for reg_name, reg in regressors.items():
     reg_eval_metrics(y_test,ypred) 
     train_test_scr(m)
     results[reg_name] = m.score(X_test, y_test)
-    model.append(m)
     print("")
 res = pd.DataFrame(results,index=['R2_Score'])
 res.T 
