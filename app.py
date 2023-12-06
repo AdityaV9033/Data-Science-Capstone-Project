@@ -46,6 +46,7 @@ regressors = {
     'Bagging_LR Regression': BaggingRegressor(LinearRegression(), n_estimators=20, random_state=42),
     'AdaBoost_DT Regression': AdaBoostRegressor(DecisionTreeRegressor(max_depth=5), n_estimators=50, random_state=42)
 }
+model=[]
 results = {}
 for reg_name, reg in regressors.items():
     m=reg.fit(X_train, y_train)
@@ -55,5 +56,25 @@ for reg_name, reg in regressors.items():
     reg_eval_metrics(y_test,ypred) 
     train_test_scr(m)
     results[reg_name] = m.score(X_test, y_test)
-res = pd.DataFrame(results,index=['R2_Score'])
-res.T
+    model.append(m)
+Best_Model=model[5]
+import pickle
+pickle.dump(Best_Model, open('best_model.pkl', 'wb')) 
+loaded_model = pickle.load(open('Best_Model.pkl', 'rb'))
+
+Year = st.sidebar.slider("year", min_value=1992, max_value=2020, step=1)
+Km_Driven = st.sidebar.slider("km driven", min_value=1, max_value=806599, step=10)
+Fuel = st.sidebar.slider("Fuel", min_value=0, max_value=5,step=1)
+Seller_Type = st.sidebar.slider("Seller Type", min_value=0, max_value=2,step=1)
+Transmission = st.sidebar.slider("Transmission", min_value=0, max_value=1,step=1)
+Owner = st.sidebar.slider("Owner", min_value=0, max_value=4,step=1)
+Model_Name = st.sidebar.slider("Model_Name", min_value=0, max_value=28,step=1)
+
+st.sidebar.text(f"Year value: {Year}")
+st.sidebar.text(f"Km Driven value: {Km_Driven}")
+st.sidebar.text(f"Fuel value: {Fuel}")
+st.sidebar.text(f"Seller_Type value: {Seller_Type}")
+st.sidebar.text(f"Transmission value: {Transmission}")
+st.sidebar.text(f"Owner value: {Owner}")
+st.sidebar.text(f"Model_Name value: {Model_Name}")
+
