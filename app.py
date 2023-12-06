@@ -59,12 +59,12 @@ for reg_name, reg in regressors.items():
     model.append(m)
 Best_Model=model[5]
 
-Year = st.slider("year", min_value=1992, max_value=2020, step=1)
+Year = st.slider("Model Purchase Year", min_value=1992, max_value=2020, step=1)
 st.text(f"Year value: {Year}")
 Km_Driven = st.slider("km driven", min_value=1, max_value=806599, step=1)
 st.text(f"Km Driven value: {Km_Driven}")
-Fuel = st.slider("Fuel", min_value=0, max_value=5,step=1)
-st.text(f"Fuel value: {Fuel}")
+Fuel = st.slider("Fuel type", min_value=0, max_value=5,step=1)
+st.text(f"Fuel type value: {Fuel}")
 Seller_Type = st.slider("Seller Type", min_value=0, max_value=2,step=1)
 st.text(f"Seller_Type value: {Seller_Type}")
 Transmission = st.slider("Transmission", min_value=0, max_value=1,step=1)
@@ -90,7 +90,8 @@ for i_name, i in input.items():
     scaled_data[i_name]=S_data
 
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
-st.text(f"Scaled value of features:\n {X1_scaled.T}")
+st.text(f"Scaled value of features:\n) 
+X1_scaled.T
 ypred=Best_Model.predict(X1_scaled)
 st.text(f"Selling price of Car is: {ypred}")
 
