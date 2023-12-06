@@ -57,11 +57,4 @@ for reg_name, reg in regressors.items():
     train_test_scr(m)
     results[reg_name] = m.score(X_test, y_test)
 best_model = max(results, key=results.get)
-
-print(f"The best model is: {best_model} with R2 score: {results[best_model]}")
-    
-    print("")
-res = pd.DataFrame(results,index=['R2_Score'])
-res.T 
-best_model = max(results, key=results.get)
 print(f"The best model is: {best_model} with R2 score: {results[best_model]}")
