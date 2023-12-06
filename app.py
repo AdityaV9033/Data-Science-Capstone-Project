@@ -96,10 +96,13 @@ for i_name, i in input.items():
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
 if Drop_options=="Random Forest Regression":
     ypred=model[5].predict(X1_scaled)
+    st.text(f"Selling price of Car is: {ypred}")
 elif Drop_options=="Adaptive Boosting with Decision Tree regressor":  
     ypred=model[8].predict(X1_scaled)
+    st.text(f"Selling price of Car is: {ypred}")
 else :
     ypred=model[3].predict(X1_scaled)
+    st.text(f"Selling price of Car is: {ypred}")
 
-st.text(f"Selling price of Car is: {ypred}")
+
 
