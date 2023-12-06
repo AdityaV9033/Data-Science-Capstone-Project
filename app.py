@@ -80,6 +80,8 @@ input={'year':Year,
        'transmission':Transmission,
        'owner':Owner,
        'Model_Name':Model_Name}
+input_X=pd.DataFrame(input, index=['value'])
+input_X.T
 scaled_data={}
 for i_name, i in input.items():
     mean_value = X[i_name].mean()
@@ -87,7 +89,6 @@ for i_name, i in input.items():
     S_data = (i - mean_value) / std_value
     scaled_data[i_name]=S_data
 
-st.text(f"Scaled input Data: {scaled_data}")
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
 X1_scaled.T
 ypred=Best_Model.predict(X1_scaled)
