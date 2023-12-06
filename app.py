@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 st.title('Selling Price of Cars')
-st.slider(df['year'])
 df = pd.read_csv('Processed_Car_dataset.csv')
 df.head()
 col_drop=['name','selling_price']
