@@ -60,18 +60,19 @@ for reg_name, reg in regressors.items():
 Best_Model=model[5]
 
 Year = st.slider("year", min_value=1992, max_value=2020, step=1)
-Km_Driven = st.slider("km driven", min_value=1, max_value=806599, step=10)
-Fuel = st.slider("Fuel", min_value=0, max_value=5,step=1)
-Seller_Type = st.slider("Seller Type", min_value=0, max_value=2,step=1)
-Transmission = st.slider("Transmission", min_value=0, max_value=1,step=1)
-Owner = st.slider("Owner", min_value=0, max_value=4,step=1)
-Model_Name = st.slider("Model_Name", min_value=0, max_value=28,step=1)
-
 st.text(f"Year value: {Year}")
+Km_Driven = st.slider("km driven", min_value=1, max_value=806599, step=10)
 st.text(f"Km Driven value: {Km_Driven}")
+Fuel = st.slider("Fuel", min_value=0, max_value=5,step=1)
 st.text(f"Fuel value: {Fuel}")
+Seller_Type = st.slider("Seller Type", min_value=0, max_value=2,step=1)
 st.text(f"Seller_Type value: {Seller_Type}")
+Transmission = st.slider("Transmission", min_value=0, max_value=1,step=1)
 st.text(f"Transmission value: {Transmission}")
+Owner = st.slider("Owner", min_value=0, max_value=4,step=1)
 st.text(f"Owner value: {Owner}")
+Model_Name = st.slider("Model_Name", min_value=0, max_value=28,step=1)
 st.text(f"Model_Name value: {Model_Name}")
+
+
 
