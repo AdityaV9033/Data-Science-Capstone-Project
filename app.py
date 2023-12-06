@@ -58,6 +58,9 @@ for reg_name, reg in regressors.items():
     results[reg_name] = m.score(X_test, y_test)
     model.append(m)
 Best_Model=model[5]
+st.sidebar.header("Select the ML model you want to use")
+Drop_options = ["Random Forest Regression", "Adaptive Boosting with Decision Tree regressor", "KNN Regression"]
+param2 = st.sidebar.selectbox("Drop_options", options=Drop_options)
 
 Year = st.slider("Model Purchase Year", min_value=1992, max_value=2020, step=1)
 st.text(f"Year value: {Year}")
