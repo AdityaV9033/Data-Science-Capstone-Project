@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-st.title('Selling Price of Cars')
+st.title('ML Model for Selling Price of Cars')
 df = pd.read_csv('Processed_Car_dataset.csv')
 df.head()
 col_drop=['name','selling_price']
@@ -57,7 +57,7 @@ for reg_name, reg in regressors.items():
     train_test_scr(m)
     results[reg_name] = m.score(X_test, y_test)
     model.append(m)
-Best_Model=model[5]
+#Best_Model=model[5]
 st.sidebar.header("Select the ML model you want to use")
 Drop_options = ["Random Forest Regression", "Adaptive Boosting with Decision Tree regressor", "KNN Regression"]
 param2 = st.sidebar.selectbox("Drop_options", options=Drop_options)
@@ -94,6 +94,11 @@ for i_name, i in input.items():
     scaled_data[i_name]=S_data
 
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
-ypred=Best_Model.predict(X1_scaled)
+if (Drop_options=='Random Forest Regression'):
+    ypred=RandomForestRegressor(n_estimators=100, random_state=42).predict(X1_scaled)
+elif (Drop_options=='Adaptive Boosting with Decision Tree regressor'):  
+    ypred=AdaBoostRegressor(DecisionTreeRegressor(max_depth=5), n_estimators=50, random_state=42).predict(X1_scaled)
+else :  
+    ypred=KNeighborsRegressor(n_neighbors=11).predict(X1_scaled)
 st.text(f"Selling price of Car is: {ypred}")
 
