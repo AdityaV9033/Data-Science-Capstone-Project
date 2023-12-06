@@ -57,7 +57,7 @@ for reg_name, reg in regressors.items():
     train_test_scr(m)
     results[reg_name] = m.score(X_test, y_test)
     model.append(m)
-#Best_Model=model[5]
+
 st.sidebar.header("Select the ML model you want to use")
 Drop_options = ["Random Forest Regression", "Adaptive Boosting with Decision Tree regressor", "KNN Regression"]
 param2 = st.sidebar.selectbox("Drop_options", options=Drop_options)
