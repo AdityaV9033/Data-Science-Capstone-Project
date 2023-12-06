@@ -81,6 +81,7 @@ input={'year':Year,
        'owner':Owner,
        'Model_Name':Model_Name}
 input_X=pd.DataFrame(input, index=['value'])
+st.text("Input value of features:")
 input_X.T
 scaled_data={}
 for i_name, i in input.items():
@@ -90,8 +91,6 @@ for i_name, i in input.items():
     scaled_data[i_name]=S_data
 
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
-st.text("Scaled value of features:\n") 
-X1_scaled.T
 ypred=Best_Model.predict(X1_scaled)
 st.text(f"Selling price of Car is: {ypred}")
 
