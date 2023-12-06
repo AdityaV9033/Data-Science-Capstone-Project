@@ -61,7 +61,7 @@ Best_Model=model[5]
 
 Year = st.slider("year", min_value=1992, max_value=2020, step=1)
 st.text(f"Year value: {Year}")
-Km_Driven = st.slider("km driven", min_value=1, max_value=806599, step=10)
+Km_Driven = st.slider("km driven", min_value=1, max_value=806599, step=1)
 st.text(f"Km Driven value: {Km_Driven}")
 Fuel = st.slider("Fuel", min_value=0, max_value=5,step=1)
 st.text(f"Fuel value: {Fuel}")
@@ -89,6 +89,7 @@ for i_name, i in input.items():
 
 st.text(f"Scaled input Data: {scaled_data}")
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
+X1_scaled.T
 ypred=Best_Model.predict(X1_scaled)
 st.text(f"Selling price of Car is: {ypred}")
 
