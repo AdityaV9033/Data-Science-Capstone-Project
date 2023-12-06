@@ -95,11 +95,11 @@ for i_name, i in input.items():
 
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
 if Drop_options=="Random Forest Regression":
-    ypred=RandomForestRegressor(n_estimators=100, random_state=42).predict(X1_scaled)
+    ypred=model[5].predict(X1_scaled)
 elif Drop_options=="Adaptive Boosting with Decision Tree regressor":  
-    ypred=AdaBoostRegressor(DecisionTreeRegressor(max_depth=5), n_estimators=50, random_state=42).predict(X1_scaled)
+    ypred=model[8].predict(X1_scaled)
 else :
-    ypred=KNeighborsRegressor(n_neighbors=11).predict(X1_scaled)
+    ypred=model[3].predict(X1_scaled)
 
 st.text(f"Selling price of Car is: {ypred}")
 
