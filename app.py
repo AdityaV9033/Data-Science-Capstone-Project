@@ -58,9 +58,6 @@ for reg_name, reg in regressors.items():
     results[reg_name] = m.score(X_test, y_test)
     model.append(m)
 Best_Model=model[5]
-import pickle
-pickle.dump(Best_Model, open('best_model.pkl', 'wb')) 
-loaded_model = pickle.load(open('Best_Model.pkl', 'rb'))
 
 Year = st.sidebar.slider("year", min_value=1992, max_value=2020, step=1)
 Km_Driven = st.sidebar.slider("km driven", min_value=1, max_value=806599, step=10)
