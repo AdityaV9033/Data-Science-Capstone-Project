@@ -90,7 +90,7 @@ for i_name, i in input.items():
     scaled_data[i_name]=S_data
 
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
-st.text(f"Scaled value of features: {X1_scaled.T}")
+st.text(f"Scaled value of features:\n {X1_scaled.T}")
 ypred=Best_Model.predict(X1_scaled)
 st.text(f"Selling price of Car is: {ypred}")
 
