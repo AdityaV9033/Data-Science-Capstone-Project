@@ -59,7 +59,7 @@ for reg_name, reg in regressors.items():
     model.append(m)
 
 st.sidebar.header("Select the ML model you want to use")
-Drop_options = ["Random Forest Regression", "Bagging with Decision Tree Regressor", "KNN Regression"]
+Drop_options = ["Random Forest Regression", "Bagging with Decision Tree Regressor", "KNN Regression", "Bagging with Linear Regressor"]
 param2 = st.sidebar.selectbox("Drop_options", options=Drop_options)
 
 Year = st.slider("Model Purchase Year", min_value=1992, max_value=2020, step=1)
@@ -99,6 +99,9 @@ if param2=="Random Forest Regression":
     st.text(f"Selling price of Car is: {ypred}")
 elif param2=="Bagging with Decision Tree Regressor":  
     ypred=model[6].predict(X1_scaled)
+    st.text(f"Selling price of Car is: {ypred}")
+elif param2=="Bagging with Linear Regressor":
+    ypred=model[7].predict(X1_scaled)
     st.text(f"Selling price of Car is: {ypred}")
 else :
     ypred=model[3].predict(X1_scaled)
