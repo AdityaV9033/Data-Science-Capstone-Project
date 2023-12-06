@@ -55,3 +55,5 @@ for reg_name, reg in regressors.items():
     reg_eval_metrics(y_test,ypred) 
     train_test_scr(m)
     results[reg_name] = m.score(X_test, y_test)
+res = pd.DataFrame(results,index=['R2_Score'])
+res.T
