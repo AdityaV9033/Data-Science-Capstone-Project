@@ -73,6 +73,22 @@ Owner = st.slider("Owner", min_value=0, max_value=4,step=1)
 st.text(f"Owner value: {Owner}")
 Model_Name = st.slider("Model_Name", min_value=0, max_value=28,step=1)
 st.text(f"Model_Name value: {Model_Name}")
+input={'year':Year,
+       'km_driven':Km_Driven,
+       'fuel':Fuel,
+       'seller_type':Seller_Type,
+       'transmission':Transmission,
+       'owner':Owner,
+       'Model_Name':Model_Name}
+scaled_data={}
+for i_name, i in input.items():
+    mean_value = X[i_name].mean()
+    std_value = X[i_name].std()
+    S_data = (i - mean_value) / std_value
+    scaled_data[i_name]=S_data
 
-
+st.text(f"Scaled input Data: {scaled_data}")
+X1_scaled=pd.DataFrame(scaled_data, index=['value'])
+ypred=Best_Model.predict(X1_scaled)
+st.text(f"Selling price of Car is: {ypred}")
 
