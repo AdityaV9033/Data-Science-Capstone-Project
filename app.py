@@ -60,7 +60,7 @@ for reg_name, reg in regressors.items():
 
 st.sidebar.header("Select the ML model you want to use")
 Drop_options = ["Random Forest Regression", "Bagging with Decision Tree Regressor", "KNN Regression", "Bagging with Linear Regressor"]
-param2 = st.sidebar.selectbox("Drop_options", options=Drop_options)
+Model_choice = st.sidebar.selectbox("Drop_options", options=Drop_options)
 
 Year = st.slider("Model Purchase Year", min_value=1992, max_value=2020, step=1)
 st.text(f"Year value: {Year}")
@@ -94,13 +94,13 @@ for i_name, i in input.items():
     scaled_data[i_name]=S_data
 
 X1_scaled=pd.DataFrame(scaled_data, index=['value'])
-if param2=="Random Forest Regression":
+if Model_choice=="Random Forest Regression":
     ypred=model[5].predict(X1_scaled)
     st.text(f"Selling price of Car is: {ypred}")
-elif param2=="Bagging with Decision Tree Regressor":  
+elif Model_choice=="Bagging with Decision Tree Regressor":  
     ypred=model[6].predict(X1_scaled)
     st.text(f"Selling price of Car is: {ypred}")
-elif param2=="Bagging with Linear Regressor":
+elif Model_choice=="Bagging with Linear Regressor":
     ypred=model[7].predict(X1_scaled)
     st.text(f"Selling price of Car is: {ypred}")
 else :
